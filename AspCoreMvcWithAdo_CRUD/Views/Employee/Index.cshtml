@@ -1,0 +1,44 @@
+﻿@model System.Data.DataTable
+@{
+    ViewData["Title"] = "Employee List";
+}
+
+<h1>@ViewData["Title"]</h1>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>
+               Name
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                IsActive
+            </th>
+            <th>    <a asp-action="AddEdit">Create New</a>
+                </th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Rows.Count; i++) {
+            <tr>
+            <td>
+                   @Model.Rows[i]["Name"]
+            </td>
+            <td>
+                    @Model.Rows[i]["Age"]
+            </td>
+            <td>
+                    @Model.Rows[i]["IsActive"]
+            </td>
+            <td>
+                    <form asp-action="DeleteConfirmed" asp-route-id="@Model.Rows[i]["ID"]">
+                        <a asp-action="AddEdit" asp-route-id="@Model.Rows[i]["ID"]" class="btn btn-warning">Edit</a>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete?')"> Delete</button>
+                    </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\AspCoreMvcWithAdo_CRUD.props" />
+</Project>
